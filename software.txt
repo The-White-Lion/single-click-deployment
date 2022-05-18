@@ -1,0 +1,8 @@
+git
+zsh
+gcc
+wget
+curl
+make
+luajit
+neofetch

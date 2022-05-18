@@ -1,0 +1,57 @@
+#!/bin/bash
+function menu() {
+    #clear
+    if [[ $1 == "first" ]]; then
+        get_os_info
+        load_installation_script
+    fi
+
+    green "==============================="
+    green "  Linux 常用工具 一键安装脚本  "
+    green "==============================="
+
+    green " 1. 安装开发环境 "
+    green " 2. 安装 z.lua "
+    green " 3. 安装 fzf "
+    green " 4. 安装 vim "
+    green " 5. 退出 "
+    echo
+
+    read -p " 请输入数字：" input_number
+    case "$input_number" in
+        1)
+            blue "安装开发环境"
+            install_golang
+            menu
+            ;;
+        2)
+            blue "安装 z.lua"
+            install_z.lua
+            menu
+            ;;
+        3)
+            blue "安装 fzf"
+            menu
+            ;;
+        4)
+            blue "安装 vim"
+            install_vim
+            clear
+            exit 0
+            ;;
+        5)
+            clear
+            exit 0
+            ;;
+        *)
+            red "输入有误"
+            menu
+            ;;
+    esac
+}
+
+source ./utils/color.sh
+source ./utils/installation_function.sh
+
+menu "first"
+
