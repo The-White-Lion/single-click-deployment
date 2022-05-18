@@ -22,20 +22,24 @@ function get_architecture() {
 
 function get_os_info() {
     get_architecture
-    get_os_release
+    get_os_distro
 }
 
 function install_utils() {
     case "${os_distro}" in
         arch)
-            sudo pacman -S $(< ../software.txt) --noconfirm
+            sudo pacman -S $(< "$root_dir/software.txt") --noconfirm
             ;;
         raspbian | debian | ubuntu)
-            sudo apt install $(< ../software.txt) -y
+            sudo apt install $(< "$root_dir/software.txt") -y
             ;;
     esac
 }
 
 get_os_info
 install_utils
-source ../utils/installation_function.sh
+
+for f in "$root_dir"/utils/*;
+do
+    source $f
+done

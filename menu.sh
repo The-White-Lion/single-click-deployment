@@ -1,11 +1,8 @@
 #!/bin/bash
-function menu() {
-    #clear
-    if [[ $1 == "first" ]]; then
-        get_os_info
-        load_installation_script
-    fi
 
+root_dir=$(pwd)
+
+function menu() {
     green "==============================="
     green "  Linux 常用工具 一键安装脚本  "
     green "==============================="
@@ -26,7 +23,7 @@ function menu() {
             ;;
         2)
             blue "安装 z.lua"
-            install_z.lua
+            install_z_lua
             menu
             ;;
         3)
@@ -51,7 +48,6 @@ function menu() {
 }
 
 source ./utils/color.sh
-source ./utils/installation_function.sh
+source ./hook/preinstall.sh
 
-menu "first"
-
+menu
