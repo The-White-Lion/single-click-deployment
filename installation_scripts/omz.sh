@@ -5,11 +5,6 @@ env_conf="$zsh_dir/env.zsh"
 omz_conf="$zsh_dir/omz.zsh"
 zshrc_conf="$zsh_dir/zshrc"
 
-{
-    echo "source $aliases_conf"
-    echo "source $env_conf"
-    echo "source $omz_conf"
-} >> "$zshrc_conf"
 
 # oh-my-zsh config
 omz_dir="$github_dir/oh-my-zsh"
@@ -24,3 +19,5 @@ git clone https://github.com/ohmyzsh/ohmyzsh.git "$omz_dir"
 } > "$omz_conf"
 
 chsh -s $(which zsh)
+
+ln -s "$zshrc_conf" "$HOME/.zshrc"

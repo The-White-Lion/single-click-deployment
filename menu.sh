@@ -33,10 +33,9 @@ function menu() {
         4)
             blue "安装 vim"
             install_vim
-            clear
-            exit 0
             ;;
         5)
+            source $root_dir/hook/postinstall.sh
             clear
             exit 0
             ;;
@@ -47,7 +46,6 @@ function menu() {
     esac
 }
 
-source ./utils/color.sh
-source ./hook/preinstall.sh
+source $root_dir/hook/preinstall.sh
 
 menu

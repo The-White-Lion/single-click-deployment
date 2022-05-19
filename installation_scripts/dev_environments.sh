@@ -42,10 +42,10 @@ function install_golang() {
 
     {
         echo "# Golang config"
-        echo "GOROOT=${GOROOT}"
-        echo 'PATH="$GOROOT/bin:$PATH"'
-        echo "GOPATH=${GOPATH}"
-        echo 'PATH="$GOPATH/bin:$PATH"'
+        echo "export GOROOT=${GOROOT}"
+        echo 'export PATH="$GOROOT/bin:$PATH"'
+        echo "export GOPATH=${GOPATH}"
+        echo 'export PATH="$GOPATH/bin:$PATH"'
     } >> "$zsh_dir/env.zsh"
 }
 
