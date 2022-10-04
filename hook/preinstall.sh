@@ -16,6 +16,8 @@ function get_architecture() {
         x86_64)
             os_architecture="amd64"
             ;;
+        armv7l)
+            os_architecture="armv7l"
     esac
     platform="linux-$os_architecture"
 }

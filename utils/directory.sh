@@ -3,7 +3,7 @@
 github_dir="$HOME/.github"
 bin_dir="$HOME/.bin"
 config_dir="$HOME/.config"
-development_dir="$HOME/.development"
+dev_env_dir="$HOME/.development"
 code_dir="$HOME/code"
 tmp_dir="$HOME/.tmp"
 zsh_dir="$config_dir/zsh"
@@ -16,7 +16,7 @@ zsh_dir="$config_dir/zsh"
 
 [[ ! -d $config_dir ]] && mkdir "$config_dir"
 
-[[ ! -d $development_dir ]] && mkdir "$development_dir"
+[[ ! -d $dev_env_dir ]] && mkdir "$dev_env_dir"
 
 [[ ! -d $code_dir ]] && mkdir "$code_dir"
 

@@ -9,7 +9,7 @@ case "${os_distro}" in
         ;;
 esac
 
-git clone https://github.com/The-White-Lion/config.git "$tmp_dir/config" > /dev/null
+git clone git@github.com:The-White-Lion/config.git "$tmp_dir/config" > /dev/null
 
 cp "$tmp_dir/config/vim/vimrc" "$HOME/.vimrc"
 

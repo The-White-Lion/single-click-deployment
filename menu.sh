@@ -27,8 +27,8 @@ function menu() {
             menu
             ;;
         3)
-            blue "安装 fzf"
-            menu
+            blue "安装 oh-my-zsh"
+            install_omz
             ;;
         4)
             blue "安装 vim"
