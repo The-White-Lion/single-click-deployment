@@ -40,7 +40,7 @@ function install_golang() {
 
     if [[ $? -ne 0 ]]; then
         echo "下载失败，检查是否设置代理"
-        echo "下载链接：$pacakge_url"
+        echo "下载链接：$package_url"
         return 0
     fi
 
