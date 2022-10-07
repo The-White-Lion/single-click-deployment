@@ -9,7 +9,7 @@ function menu() {
 
     green " 1. 安装开发环境 "
     green " 2. 安装 z.lua "
-    green " 3. 安装 fzf "
+    green " 3. 安装 oh-my-zsh "
     green " 4. 安装 vim "
     green " 5. 退出 "
     echo
