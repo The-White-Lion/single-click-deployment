@@ -30,10 +30,10 @@ function get_os_info() {
 function install_utils() {
     case "${os_distro}" in
         arch)
-            sudo pacman -S $(< "$root_dir/software.txt") --noconfirm
+            sudo pacman -S $(< "$PWD/software.txt") --noconfirm
             ;;
         raspbian | debian | ubuntu)
-            sudo apt install $(< "$root_dir/software.txt") -y
+            sudo apt install $(< "$PWD/software.txt") -y
             ;;
     esac
 }
@@ -41,7 +41,10 @@ function install_utils() {
 get_os_info
 install_utils
 
-for f in "$root_dir"/utils/*;
+for f in "$PWD"/utils/*;
 do
     source $f
 done
+
+# Download my config
+git clone git@github.com:The-White-Lion/config.git "$TMP_DIR/config" > /dev/null

@@ -1,14 +1,18 @@
 #!/bin/bash
 function install_z_lua() {
-    source "$root_dir"/installation_scripts/z_lua.sh
+    source "$PWD"/installation_scripts/z_lua.sh
 }
 
 function install_vim() {
-    source "$root_dir"/installation_scripts/vim.sh
+    source "$PWD"/installation_scripts/vim.sh
 }
 
 function install_omz() {
-    source "$root_dir"/installation_scripts/omz.sh
+    source "$PWD"/installation_scripts/omz.sh
 }
 
-source "$root_dir"/installation_scripts/dev_environments.sh
+function install_ranger() {
+    source "$PWD"/installation_scripts/ranger.sh
+}
+
+source "$PWD"/installation_scripts/dev_environments.sh

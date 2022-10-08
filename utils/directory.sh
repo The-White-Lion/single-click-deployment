@@ -1,23 +1,23 @@
 #!/bin/bash
 
-github_dir="$HOME/.github"
-bin_dir="$HOME/.bin"
-config_dir="$HOME/.config"
-dev_env_dir="$HOME/.development"
-code_dir="$HOME/code"
-tmp_dir="$HOME/.tmp"
-zsh_dir="$config_dir/zsh"
+GITHUB_DIR="$HOME/.github"
+BIN_DIR="$HOME/.bin"
+CONFIG_DIR="$HOME/.config"
+DEV_ENV_DIR="$HOME/.development"
+CODE_DIR="$HOME/code"
+TMP_DIR="$HOME/.tmp"
+ZSH_DIR="$CONFIG_DIR/zsh"
 
-[[ ! -d "$zsh_dir" ]] && mkdir "$zsh_dir"
+[[ ! -d "$ZSH_DIR" ]] && mkdir "$ZSH_DIR"
 
-[[ ! -d $github_dir ]] && mkdir "$github_dir"
+[[ ! -d "$GITHUB_DIR" ]] && mkdir "$GITHUB_DIR"
 
-[[ ! -d $bin_dir ]] && mkdir "$bin_dir"
+[[ ! -d "$BIN_DIR" ]] && mkdir "$BIN_DIR"
 
-[[ ! -d $config_dir ]] && mkdir "$config_dir"
+[[ ! -d "$CONFIG_DIR" ]] && mkdir "$CONFIG_DIR"
 
-[[ ! -d $dev_env_dir ]] && mkdir "$dev_env_dir"
+[[ ! -d "$DEV_ENV_DIR" ]] && mkdir "$DEV_ENV_DIR"
 
-[[ ! -d $code_dir ]] && mkdir "$code_dir"
+[[ ! -d $CODE_DIR ]] && mkdir "$CODE_DIR"
 
-[[ ! -d $tmp_dir ]] && mkdir "$tmp_dir"
+[[ ! -d $TMP_DIR ]] && mkdir "$TMP_DIR"

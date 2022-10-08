@@ -9,9 +9,8 @@ case "${os_distro}" in
         ;;
 esac
 
-git clone git@github.com:The-White-Lion/config.git "$tmp_dir/config" > /dev/null
+cp "$TMP_DIR/config/vim/vimrc" "$HOME/.vimrc"
 
-cp "$tmp_dir/config/vim/vimrc" "$HOME/.vimrc"
-
+# Vim plugin manager
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

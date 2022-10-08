@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rm -rf $tmp_dir
+rm -rf $TMP_DIR

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-root_dir=$(pwd)
-
 function menu() {
     green "==============================="
     green "  Linux 常用工具 一键安装脚本  "
@@ -11,7 +9,8 @@ function menu() {
     green " 2. 安装 z.lua "
     green " 3. 安装 oh-my-zsh "
     green " 4. 安装 vim "
-    green " 5. 退出 "
+    green " 5. 安装 ranger"
+    green " 6. 退出 "
     echo
 
     read -p " 请输入数字：" input_number
@@ -35,7 +34,11 @@ function menu() {
             install_vim
             ;;
         5)
-            source $root_dir/hook/postinstall.sh
+            blue "安装 ranger"
+            install_ranger
+            ;;
+        6)
+            source "$PWD"/hook/postinstall.sh
             clear
             exit 0
             ;;
@@ -46,6 +49,6 @@ function menu() {
     esac
 }
 
-source $root_dir/hook/preinstall.sh
+source "$PWD"/hook/preinstall.sh
 
 menu

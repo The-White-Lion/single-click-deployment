@@ -1,13 +1,13 @@
 #!/bin/bash
 
-aliases_conf="$zsh_dir/aliases.zsh"
-env_conf="$zsh_dir/env.zsh"
-omz_conf="$zsh_dir/omz.zsh"
-zshrc_conf="$zsh_dir/zshrc"
+aliases_conf="$ZSH_DIR/aliases.zsh"
+env_conf="$ZSH_DIR/env.zsh"
+omz_conf="$ZSH_DIR/omz.zsh"
+zshrc_conf="$ZSH_DIR/zshrc"
 
 
 # oh-my-zsh path
-omz_dir="$github_dir/oh-my-zsh"
+omz_dir="$GITHUB_DIR/oh-my-zsh"
 
 # Manual Installation
 git clone https://github.com/ohmyzsh/ohmyzsh.git "$omz_dir"
@@ -33,12 +33,11 @@ git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${o
 [[ ! -f $env_conf ]] && touch $env_conf
 
 {
-    for f in "$zsh_dir"/*.zsh;
+    for f in "$ZSH_DIR"/*.zsh;
     do
         echo "source $f"
     done
 } > "$zshrc_conf"
 
 ln -s "$zshrc_conf" "$HOME/.zshrc"
-
 chsh -s $(which zsh)
