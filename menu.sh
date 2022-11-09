@@ -20,6 +20,7 @@ function list_soft() {
         1)
             blue "安装开发环境"
             install_golang
+            install_lua
             ;;
         2)
             blue "安装 z.lua"

@@ -6,3 +6,4 @@ curl
 make
 luajit
 neofetch
+python3-pip

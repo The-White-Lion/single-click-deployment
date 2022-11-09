@@ -19,9 +19,9 @@ function install_lua() {
 }
 
 function install_golang() {
-    #if [[ -n $(go version) ]]; then
-    #    return 0
-    #fi
+    if [[ -n $(go version) ]]; then
+        return 0
+    fi
 
     if [[ $os_architecture = "armv7l" ]]; then
         platform="linux-armv6l"

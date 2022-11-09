@@ -12,4 +12,8 @@
 + go
 + lua
 
-Additional content will continue to be added to this project
+Additional content will continue to be added to this project.
+
+## Note
+
+Before configuring zsh conf, needs to install oh-my-zsh. Otherwise some problems will occur.

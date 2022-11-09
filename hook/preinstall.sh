@@ -3,6 +3,7 @@
 os_version=""
 os_distro=""
 os_architecture=""
+os_type=""
 
 function get_os_distro() {
     if [[ -f /etc/os-release ]]; then
@@ -42,6 +43,16 @@ function install_utils() {
     esac
 }
 
+function set_proxy() {
+    os_type=$(uname -r | awk -F "-" '{print $NF}')
+    if [[ ${os_type:0:3} == "WSL" ]]; then
+        proxy_ip=$(ip r | awk -F " " 'NR == 1 {print $3}')
+        export http_proxy=http://$proxy_ip:7890
+        export https_proxy=http://$proxy_ip:7890
+    fi
+}
+
+set_proxy
 get_os_info
 install_utils
 
