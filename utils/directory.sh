@@ -1,13 +1,5 @@
 #!/bin/bash
 
-GITHUB_DIR="$HOME/.github"
-BIN_DIR="$HOME/.bin"
-CONFIG_DIR="$HOME/.config"
-DEV_ENV_DIR="$HOME/.development"
-CODE_DIR="$HOME/code"
-TMP_DIR="$HOME/.tmp"
-ZSH_DIR="$CONFIG_DIR/zsh"
-
 [[ ! -d "$ZSH_DIR" ]] && mkdir "$ZSH_DIR"
 
 [[ ! -d "$GITHUB_DIR" ]] && mkdir "$GITHUB_DIR"

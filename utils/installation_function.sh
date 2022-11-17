@@ -1,4 +1,5 @@
 #!/bin/bash
+
 function install_z_lua() {
     source "$PWD"/installation_scripts/z_lua.sh
 }

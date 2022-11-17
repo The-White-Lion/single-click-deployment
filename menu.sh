@@ -40,7 +40,6 @@ function list_soft() {
             ;;
         6)
             source "$PWD"/hook/postinstall.sh
-            clear
             exit 0
             ;;
         *)

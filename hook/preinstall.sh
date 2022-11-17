@@ -1,44 +1,22 @@
 #!/bin/bash
 
-os_version=""
-os_distro=""
-os_architecture=""
-os_type=""
-
-function get_os_distro() {
-    if [[ -f /etc/os-release ]]; then
-        source /etc/os-release
-        os_distro=$ID
-    fi
+function load_utils() {
+    source "$PWD/utils/color.sh";
+    source "$PWD/utils/constant.sh";
+    source "$PWD/utils/directory.sh";
+    source "$PWD/utils/installation_function.sh";
+    source "$PWD/utils/os_info.sh";
 }
 
-function get_architecture() {
-    case $(uname -m) in
-        x86_64)
-            os_architecture="amd64"
-            ;;
-        armv7l)
-            os_architecture="armv7l"
-            ;;
-        aarch64)
-            os_architecture="arm64"
-            ;;
-    esac
-    platform="linux-$os_architecture"
-}
-
-function get_os_info() {
-    get_architecture
-    get_os_distro
-}
-
-function install_utils() {
+function install_dependencies() {
     case "${os_distro}" in
         arch)
-            sudo pacman -S $(< "$PWD/software.txt") --noconfirm
+            sudo pacman -Syy
+            sudo pacman -S $(< "$PWD/dependencies.txt") --noconfirm
             ;;
         raspbian | debian | ubuntu)
-            sudo apt install $(< "$PWD/software.txt") -y
+            sudo apt update
+            sudo apt install $(< "$PWD/dependencies.txt") -y
             ;;
     esac
 }
@@ -52,14 +30,10 @@ function set_proxy() {
     fi
 }
 
+load_utils
 set_proxy
 get_os_info
-install_utils
+install_dependencies
 
-for f in "$PWD"/utils/*;
-do
-    source $f
-done
-
-# Download my config
-git clone git@github.com:The-White-Lion/config.git "$TMP_DIR/config" > /dev/null
+# Download Custom Config
+git clone https://github.com/The-White-Lion/config.git "$TMP_DIR/config" > /dev/null
