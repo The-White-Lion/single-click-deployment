@@ -16,7 +16,7 @@ function show_menu() {
 
 function list_soft() {
     read -p " 请输入数字：" input_number
-    case "$input_number" in
+    case "${input_number}" in
         1)
             blue "安装开发环境"
             install_golang
@@ -39,7 +39,7 @@ function list_soft() {
             install_ranger
             ;;
         6)
-            source "$PWD"/hook/postinstall.sh
+            source "${PWD}/hook/postinstall.sh"
             exit 0
             ;;
         *)
@@ -49,13 +49,12 @@ function list_soft() {
 }
 
 function main() {
-    while true
-    do
+    while true ; do
         show_menu
         list_soft
     done
 }
 
-source "$PWD"/hook/preinstall.sh
+source "${PWD}/hook/preinstall.sh"
 
 main
