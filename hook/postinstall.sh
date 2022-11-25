@@ -26,3 +26,5 @@ blue "写入别名配置文件"
 } >> "${ALIASES_CONF}"
 
 yellow "zsh 配置完成"
+
+yellow "请退出之后重新登陆"

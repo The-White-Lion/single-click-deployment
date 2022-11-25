@@ -9,8 +9,9 @@ function show_menu() {
     green " 2. 安装 z.lua "
     green " 3. 安装 oh-my-zsh "
     green " 4. 安装 vim "
-    green " 5. 安装 ranger"
-    green " 6. 退出 "
+    green " 5. 安装 ranger "
+    green " 6. 安装 docker "
+    green " 0. 退出 "
     echo
 }
 
@@ -39,6 +40,10 @@ function list_soft() {
             install_ranger
             ;;
         6)
+            blue "安装 docker"
+            install_docker
+            ;;
+        0)
             source "${PWD}/hook/postinstall.sh"
             exit 0
             ;;
