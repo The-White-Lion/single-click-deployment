@@ -7,3 +7,4 @@ make
 luajit
 neofetch
 python3-pip
+python3-venv
