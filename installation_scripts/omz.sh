@@ -55,4 +55,4 @@ fi
 } > "${ZSHRC_CONF}"
 
 ln -s "${ZSHRC_CONF}" "${HOME}/.zshrc"
-chsh -s "$(which zsh)"
+sudo usermod -s "$(which zsh)" "${USER}"
