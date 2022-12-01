@@ -7,6 +7,9 @@ case "${os_distro}" in
     raspbian | debian | ubuntu)
         sudo apt install vim -y
         ;;
+    fedora)
+        sudo dnf install vim -y
+        ;;
 esac
 
 cp "${TMP_DIR}/config/vim/vimrc" "${HOME}/.vimrc"
