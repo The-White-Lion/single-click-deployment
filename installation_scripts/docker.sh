@@ -1,5 +1,13 @@
 #!/bin/bash
 
+docker_bin="$(command -v docker)"
+
+if [[ -n "${docker_bin}" ]]; then
+    blue "本系统已安装 docker"
+    "${docker_bin}" version
+    return 0
+fi
+
 # Different distro has different installation method
 function ubuntu() {
     # Configure Docker Repository
