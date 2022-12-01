@@ -1,0 +1,13 @@
+git
+zsh
+gcc
+wget
+curl
+make
+luajit
+neofetch
+zlib-devel
+python3-pip
+python3-venv
+python3-devel
+libjpeg-turbo-devel

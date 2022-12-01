@@ -18,6 +18,10 @@ function install_dependencies() {
             sudo apt update
             sudo apt install $(< "${PWD}/dependency/ubuntu") -y
             ;;
+        fedora)
+            sudo dnf check-update -y
+            sudo dnf install $(< "${PWD}/dependency/fedora") -y
+            ;;
     esac
 }
 
