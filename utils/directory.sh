@@ -13,3 +13,5 @@
 [[ ! -d "${TMP_DIR}" ]] && mkdir "${TMP_DIR}"
 
 [[ ! -d "${ZSH_DIR}" ]] && mkdir "${ZSH_DIR}"
+
+[[ ! -d "${FONT_DIR}" ]] && mkdir "${FONT_DIR}"

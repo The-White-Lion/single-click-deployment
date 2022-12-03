@@ -8,6 +8,7 @@ readonly DEV_ENV_DIR="${HOME}/.development"
 readonly CODE_DIR="${HOME}/code"
 readonly TMP_DIR="${HOME}/.tmp"
 readonly ZSH_DIR="${CONFIG_DIR}/zsh"
+readonly FONT_DIR="${HOME}/.local/share/fonts"
 
 # Zsh Config File
 readonly ALIASES_CONF="${ZSH_DIR}/aliases.zsh"

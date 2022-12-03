@@ -20,4 +20,8 @@ function install_docker() {
     source "${PWD}/installation_scripts/docker.sh"
 }
 
+function install_font() {
+    source "${PWD}/installation_scripts/font.sh"
+}
+
 source "${PWD}/installation_scripts/dev_environments.sh"

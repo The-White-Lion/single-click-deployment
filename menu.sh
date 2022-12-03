@@ -6,11 +6,12 @@ function show_menu() {
     green "==============================="
 
     green " 1. 安装开发环境 "
-    green " 2. 安装 z.lua "
-    green " 3. 安装 oh-my-zsh "
+    green " 2. 安装 nerd font (Jetbrains Mono, CascadiaCode) "
+    green " 3. 安装 z.lua "
     green " 4. 安装 vim "
     green " 5. 安装 ranger "
     green " 6. 安装 docker "
+    green " 7. 安装 oh-my-zsh "
     green " 0. 退出 "
     echo
 }
@@ -24,12 +25,12 @@ function list_soft() {
             install_lua
             ;;
         2)
-            blue "安装 z.lua"
-            install_z_lua
+            blue "安装 nerd font"
+            install_font
             ;;
         3)
-            blue "安装 oh-my-zsh"
-            install_omz
+            blue "安装 z.lua"
+            install_z_lua
             ;;
         4)
             blue "安装 vim"
@@ -42,6 +43,10 @@ function list_soft() {
         6)
             blue "安装 docker"
             install_docker
+            ;;
+        7)
+            blue "安装 oh-my-zsh"
+            install_omz
             ;;
         0)
             source "${PWD}/hook/postinstall.sh"
