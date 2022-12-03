@@ -40,11 +40,22 @@ get_os_info
 install_dependencies
 
 # Download Custom Config
-if [[ ! -d "${TMP_DIR}/config" ]]; then
-    git clone https://github.com/The-White-Lion/config.git "${TMP_DIR}/config" > /dev/null
+if [[ ! -d "${GITHUB_DIR}/config" ]]; then
+    git clone https://github.com/The-White-Lion/config.git "${GITHUB_DIR}/config" > /dev/null
 
     if [[ $? != 0 ]]; then
         red "配置仓库下载失败，请检查网络设置，程序退出"
         exit 0
     fi
+else
+    blue "配置仓库已经存在尝试更新"
+    cd "${GITHUB_DIR}/config"
+
+    git pull -r
+    if [[ $? != 0 ]]; then
+        red "配置仓库更新失败，请检查，程序退出"
+        exit 0
+    fi
+
+    cd -
 fi

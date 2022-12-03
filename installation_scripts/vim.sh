@@ -12,7 +12,7 @@ case "${os_distro}" in
         ;;
 esac
 
-cp "${TMP_DIR}/config/vim/vimrc" "${HOME}/.vimrc"
+cp "${GITHUB_DIR}/config/vim/vimrc" "${HOME}/.vimrc"
 
 # Vim plugin manager
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
