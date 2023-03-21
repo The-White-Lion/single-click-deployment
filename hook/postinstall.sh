@@ -9,7 +9,7 @@ blue "写入环境变量配置文件"
 {
     echo "# Environment Settings"
     echo 'export PATH=".:$HOME/.bin:$HOME/.local/bin:$PATH"'
-    echo 'export PYTHONPATH=".."'
+    echo 'export PYTHONPATH="..:$PYTHONPATH"'
 
     # Proxy Settings
     echo "# Proxy Settings"
