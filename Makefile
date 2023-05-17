@@ -3,36 +3,49 @@ BIN_PATH = $(HOME)/.bin
 CONFIG_PATH = $(HOME)/.config
 DEV_PATH = $(HOME)/.development
 
-.PHONY: config, dependency, install_zlua, install_all, clean, install_vim, install_ranger
+INSTALL := install_zlua, install_all, install_vim, install_docker, \
+					 install_ranger, install_nodejs, install_python
+deps := config, dependency
+.PHONY: $(deps), $(INSTALL), clean
 
 config:
 	git submodule init
 	git submodule update
 
 dependency:
-	sh installation_scripts/dependency.sh
+	bash installation/dependency.sh
 
-install_zlua: config
-	sh installation_scripts/z_lua.sh
-	cp config/zsh/z_lua.zsh $(HOME)/.config/zsh
+install_go:
+	bash installation/go.sh
+
+install_nodejs:
+	echo nodejs
+
+install_python:
+	echo pyenv
+
+install_docker:
+	echo docker
 
 install_omz:
 	cp config/zsh/* $(HOME)/.config/zsh
-	sh installation_scripts/omz.sh
+	bash installation/omz.sh
 	cp config/zsh/omz.zsh $(HOME)/.config/zsh
 
-install_vim:
-	sh installation_scripts/vim.sh
-
 install_ranger:
-	sh installation_scripts/ranger.sh
+	bash installation/ranger.sh
 
-install_development:
-	-mkdir -p $(HOME)/code/go $(DEV_PATH)/go
-	sh installation_scripts/development.sh
+install_vim:
+	bash installation/vim.sh
 
-install_all: dependency
+install_zlua:
+	bash installation/z_lua.sh
+	cp config/zsh/z_lua.zsh $(HOME)/.config/zsh
+
+install_all: $(install)
 	# -mkdir -p $(GITHUB_PATH) $(BIN_PATH) $(CONFIG_PATH) $(DEV_PATH)
+	echo all
 
 clean:
+	echo clean
 	rm -rf $(GITHUB_PATH)

@@ -4,7 +4,7 @@ omz_dir="${HOME}/tmp/oh-my-zsh"
 
 if [[ -d "${omz_dir}" ]]; then
  mv "${omz_dir}" "${omz_dir}$(date +'%Y%m%d%H%M%S')"
-fi 
+fi
 
 git clone https://github.com/ohmyzsh/ohmyzsh.git "${omz_dir}"
 

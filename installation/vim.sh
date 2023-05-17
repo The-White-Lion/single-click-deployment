@@ -24,4 +24,3 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 vim +PlugInstall +qall
 
 echo "vim 安装完成"
-

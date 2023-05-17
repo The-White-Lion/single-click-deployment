@@ -14,10 +14,9 @@ if [[ $? != 0 ]]; then
 fi
 
 {
-  echo 'eval "$(lua' "${z_path}" '--init zsh enhanced once fzf echo)"' 
+  echo 'eval "$(lua' "${z_path}/z.lua" '--init zsh enhanced once fzf echo)"' 
   echo "alias zc='z -c'   # 严格匹配当前路径的子路径"
   echo "alias zz='z -i'   # 使用交互式选择模式"
   echo "alias zf='z -I'   # 使用 fzf 对多个结果进行选择"
   echo "alias zb='z -b'   # 快速回到父目录"
 } > "config/zsh/z_lua.zsh"
-
