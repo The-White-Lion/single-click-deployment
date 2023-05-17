@@ -24,7 +24,5 @@ function get_os_architecture() {
     platform="linux-${os_architecture}"
 }
 
-function get_os_info() {
-    get_os_architecture
-    get_os_distro
-}
+get_os_architecture
+get_os_distro

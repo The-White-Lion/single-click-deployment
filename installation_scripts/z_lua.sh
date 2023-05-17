@@ -1,13 +1,23 @@
 #!/bin/bash
 
-git clone https://github.com/skywind3000/z.lua.git "${GITHUB_DIR}/z.lua" > /dev/null
+z_path="${HOME}/tmp/z.lua"
 
-if [[ $? != 0 ]]; then
-    red "z.lua 下载失败，检查网络连接"
-    return 0
+if [[ -d "${z_path}" ]]; then
+  rm -rf "${z_path}"
 fi
 
+git clone https://github.com/skywind3000/z.lua.git "${z_path}" > /dev/null 2>&1
 
-echo 'eval "$(lua' "${GITHUB_DIR}/z.lua/z.lua" '--init zsh)"' > "${ZSH_DIR}/z_lua.zsh"
+if [[ $? != 0 ]]; then
+  echo "z.lua 下载失败，检查网络连接"
+  exit
+fi
 
-# Todo 别名设置 细化配置
+{
+  echo 'eval "$(lua' "${z_path}" '--init zsh enhanced once fzf echo)"' 
+  echo "alias zc='z -c'   # 严格匹配当前路径的子路径"
+  echo "alias zz='z -i'   # 使用交互式选择模式"
+  echo "alias zf='z -I'   # 使用 fzf 对多个结果进行选择"
+  echo "alias zb='z -b'   # 快速回到父目录"
+} > "config/zsh/z_lua.zsh"
+

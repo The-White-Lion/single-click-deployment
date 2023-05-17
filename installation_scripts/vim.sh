@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source utils/os_info
+
 case "${os_distro}" in
     arch)
         sudo pacman -S vim --noconfirm
@@ -12,7 +14,7 @@ case "${os_distro}" in
         ;;
 esac
 
-cp "${GITHUB_DIR}/config/vim/vimrc" "${HOME}/.vimrc"
+cp "config/vim/vimrc" "${HOME}/.vimrc"
 
 # Vim plugin manager
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -21,4 +23,5 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 # Install Plugin
 vim +PlugInstall +qall
 
-yellow "vim 安装完成"
+echo "vim 安装完成"
+
