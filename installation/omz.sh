@@ -44,6 +44,8 @@ fi
   echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh'
 } > "config/zsh/omz.zsh"
 
+cp "config/zsh/zshrc" "${HOME}/.config/zsh/zshrc"
+
 if [[ -s "${HOME}/.zshrc" ]]; then
   mv "${HOME}/.zshrc" "${HOME}/.zshrc$(date +'%Y%m%d%M%H%S')"
 fi

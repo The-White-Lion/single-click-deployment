@@ -1,12 +1,11 @@
-GITHUB_PATH = $(HOME)/tmp
-BIN_PATH = $(HOME)/.bin
+GITHUB_PATH = $(HOME)/.github
 CONFIG_PATH = $(HOME)/.config
 DEV_PATH = $(HOME)/.development
 
 INSTALL := install_zlua, install_all, install_vim, install_docker, \
 					 install_ranger, install_nodejs, install_python, install_neovim
 deps := config, dependency
-.PHONY: $(deps), $(INSTALL), clean
+.PHONY: $(deps), $(INSTALL), clean, post
 
 config:
 	git submodule init
@@ -15,14 +14,17 @@ config:
 dependency:
 	bash installation/dependency.sh
 
-install_go:
+post:
+	bash utils/post.sh
+
+install_development: install_omz
 	bash installation/go.sh
-
-install_nodejs:
 	bash installation/nodejs.sh
-
-install_python:
 	bash installation/python.sh
+	@post
+
+post:
+	bash utils/post.sh
 
 install_docker:
 	bash installation/docker.sh
@@ -41,13 +43,12 @@ install_ranger:
 install_vim:
 	bash installation/vim.sh
 
-install_zlua:
+install_zlua: install_omz
 	bash installation/z_lua.sh
 	cp config/zsh/z_lua.zsh $(HOME)/.config/zsh
 
 install_all: $(install)
-	# -mkdir -p $(GITHUB_PATH) $(BIN_PATH) $(CONFIG_PATH) $(DEV_PATH)
-	echo all
+	-mkdir -p $(GITHUB_PATH) $(BIN_PATH) $(CONFIG_PATH) $(DEV_PATH)
 
 clean:
 	echo clean

@@ -39,7 +39,7 @@ rm -rf "go.tar.gz"
 {
   echo "# Golang config"
   echo "export GOROOT=${GOROOT}"
-  echo 'export PATH="$GOROOT/bin:$PATH"'
+  echo 'export PATH="${GOROOT}/bin:$PATH"'
   echo "export GOPATH=${GOPATH}"
-  echo 'export PATH="$GOPATH/bin:$PATH"'
-} > "config/zsh/env.zsh"
+  echo 'export PATH="${GOPATH}/bin:$PATH"'
+} > "config/zsh/go_env.zsh"

@@ -34,7 +34,8 @@ cd "${PYENV_ROOT}" && src/configure && make -C src
 cd -
 
 {
+  echo '#Pyenv config'
   echo 'export PYENV_ROOT="$HOME/.github/pyenv"'
   echo 'export PATH="${PYENV_ROOT}/bin:$PATH"'
   echo 'eval "$(pyenv init -)"'
-} > "config/zsh/env.zsh"
+} > "config/zsh/python_env.zsh"

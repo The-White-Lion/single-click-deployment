@@ -22,9 +22,10 @@ tar --strip-components=1 -zxf node.tar.gz -C "${NODE_ROOT}"
 
 rm -rf node.tar.gz
 
-cp "config/npm/npmrc" "${HOME}/.nprc"
+# cp "config/npm/npmrc" "${HOME}/.nprc"
 
 {
+  echo '#Nodejs config'
   echo 'NODE_ROOT="${HOME}/.development/node"'
   echo 'export PATH="${NODE_ROOT}/bin:$PATH"'
 } > "config/zsh/node_env.zsh"
