@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -u
+
 source "utils/os_info.sh"
 
 latest_version="$(curl -s https://go.dev/VERSION?m=text)"

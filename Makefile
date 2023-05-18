@@ -4,7 +4,7 @@ CONFIG_PATH = $(HOME)/.config
 DEV_PATH = $(HOME)/.development
 
 INSTALL := install_zlua, install_all, install_vim, install_docker, \
-					 install_ranger, install_nodejs, install_python
+					 install_ranger, install_nodejs, install_python, install_neovim
 deps := config, dependency
 .PHONY: $(deps), $(INSTALL), clean
 
@@ -19,13 +19,16 @@ install_go:
 	bash installation/go.sh
 
 install_nodejs:
-	echo nodejs
+	bash installation/nodejs.sh
 
 install_python:
-	echo pyenv
+	bash installation/python.sh
 
 install_docker:
-	echo docker
+	bash installation/docker.sh
+
+install_neovim:
+	bash installation/neovim.sh
 
 install_omz:
 	cp config/zsh/* $(HOME)/.config/zsh

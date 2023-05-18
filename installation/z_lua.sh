@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -u
+
 z_path="${HOME}/tmp/z.lua"
 
 if [[ -d "${z_path}" ]]; then

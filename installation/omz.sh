@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -u
+
 omz_dir="${HOME}/tmp/oh-my-zsh"
 
 if [[ -d "${omz_dir}" ]]; then
@@ -46,5 +48,5 @@ if [[ -s "${HOME}/.zshrc" ]]; then
   mv "${HOME}/.zshrc" "${HOME}/.zshrc$(date +'%Y%m%d%M%H%S')"
 fi
 
-ln -s "config/zsh/zshrc" "${HOME}/.zshrc"
+ln -s "${HOME}/.config/zsh/zshrc" "${HOME}/.zshrc"
 sudo usermod -s "$(which zsh)" "${USER}"

@@ -1,9 +1,12 @@
+base-devel
 git
 zsh
 gcc
 wget
 curl
 make
-luajit
 neofetch
-python-pip
+openssl
+tk
+xz
+zlib

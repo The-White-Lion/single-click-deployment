@@ -1,6 +1,8 @@
 #!/bin/bash
 
-source utils/os_info
+set -u
+
+source "utils/os_info"
 
 case "${os_distro}" in
     arch)
