@@ -2,7 +2,7 @@
 
 set -u
 
-source "utils/os_info"
+source "utils/os_info.sh"
 
 case "${os_distro}" in
     arch)

@@ -2,6 +2,7 @@
 
 set -u
 
+source "utils/os_info.sh"
 docker_bin="$(command -v docker)"
 
 if [[ -n "${docker_bin}" ]]; then

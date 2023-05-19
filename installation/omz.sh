@@ -2,7 +2,7 @@
 
 set -u
 
-omz_dir="${HOME}/tmp/oh-my-zsh"
+omz_dir="${HOME}/.github/oh-my-zsh"
 
 if [[ -d "${omz_dir}" ]]; then
  mv "${omz_dir}" "${omz_dir}$(date +'%Y%m%d%H%M%S')"
@@ -43,6 +43,8 @@ fi
   echo '# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh'
   echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh'
 } > "config/zsh/omz.zsh"
+
+[[ -d "${HOME}/.config/zsh" ]] || mkdir -p "${HOME}/.config/zsh"
 
 cp "config/zsh/zshrc" "${HOME}/.config/zsh/zshrc"
 

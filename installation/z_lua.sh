@@ -2,7 +2,7 @@
 
 set -u
 
-z_path="${HOME}/tmp/z.lua"
+z_path="${HOME}/.github/z.lua"
 
 if [[ -d "${z_path}" ]]; then
   rm -rf "${z_path}"

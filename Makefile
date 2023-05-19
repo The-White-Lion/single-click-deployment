@@ -16,22 +16,21 @@ dependency:
 post:
 	bash utils/post.sh
 
-install_development: install_omz
+install_development:
 	bash installation/go.sh
 	bash installation/nodejs.sh
 	bash installation/python.sh
-	@make post
 
 install_docker:
-	bash installation/docker.sh
+	#bash installation/docker.sh
+	echo docker
 
 install_neovim:
-	bash installation/neovim.sh
+	#bash installation/neovim.sh
+	echo neovim
 
 install_omz:
-	cp config/zsh/* $(HOME)/.config/zsh
 	bash installation/omz.sh
-	cp config/zsh/omz.zsh $(HOME)/.config/zsh
 
 install_ranger:
 	bash installation/ranger.sh
@@ -39,11 +38,11 @@ install_ranger:
 install_vim:
 	bash installation/vim.sh
 
-install_zlua: install_omz
+install_zlua:
 	bash installation/z_lua.sh
 	cp config/zsh/z_lua.zsh $(HOME)/.config/zsh
 
-install_all:#dependency
+install_all: dependency
 	@-mkdir -p $(GITHUB_PATH) $(CONFIG_PATH) $(DEV_PATH)
 	@make download_config
 	@make $(INSTALL)
