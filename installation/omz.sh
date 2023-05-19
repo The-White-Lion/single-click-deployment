@@ -25,7 +25,7 @@ if [[ $? != 0 ]]; then
 fi
 
 # plugin
-local highlighting_plugin="zsh-syntax-highlighting"
+highlighting_plugin="zsh-syntax-highlighting"
 
 git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git "${omz_dir}/custom/plugins/zsh-syntax-highlighting"
 
