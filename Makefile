@@ -1,7 +1,3 @@
-GITHUB_PATH = $(HOME)/.github
-CONFIG_PATH = $(HOME)/.config
-DEV_PATH = $(HOME)/.development
-
 INSTALL := install_omz install_development install_zlua install_vim \
 					 install_docker install_ranger install_neovim
 .PHONY: download_config dependency clean post install_all $(INSTALL)
@@ -10,11 +6,8 @@ download_config:
 	git submodule init
 	git submodule update
 
-dependency:
-	bash installation/dependency.sh
-
-post:
-	bash utils/post.sh
+install_software:
+	bash installation/software.sh
 
 install_development:
 	bash installation/go.sh
