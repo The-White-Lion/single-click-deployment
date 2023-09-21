@@ -1,10 +1,14 @@
 #!/bin/bash
 
-# This function is used to back up directory or file
-# it takes one argument
-# arg1: file or directory name
+# Print error message to STDERR and exit
+function die() {
+    echo >&2 "$*"
+    exit 1
+}
+
+# Back up directory or file
 function backup() {
-    local path=$1
+    local path="${1}"
     if [[ -d "${path}" ]]; then
         mv "${path}" "${path}$(date +'%Y%m%d%H%M%S')"
     fi
@@ -14,29 +18,52 @@ function backup() {
     fi
 }
 
-# This function is used to download the github repository
-# it takes three arguments
-# arg1: the repository url where need to download
-# arg2: the target directory where arg1 to be saved
-# arg3: the name of the arg1 to download
+# Download github repository
 function git_clone(){
-    local repository_url=$1
-    local target_dir=$2
+    local repository_url="${1}"
+    local target_dir="${2}"
     local name=$3
     echo "start download: ${name}"
-    git clone --depth=1 "https://github.com/${repository_url}" "${target_dir}"
+    git clone --depth=1 "https://github.com/${repository_url}" "${target_dir}" 2>&1 >> /dev/null
     if [[ $? != 0 ]]; then
-        echo "failed to download [${name}], please check your system's network configuration and especiall the proxy settings"
+        die "failed to download [${name}], please check your system's network configuration and especiall the proxy settings"
     fi
 }
 
-# This function moves the configuration file to the right place and to clean up the tmp files
-# it takes two arguments
-# arg1: the configuration file directory
-# arg2: the configuration file
+# Moves the configuration file to the right place and clean up the tmp files
 function config() {
-    local conf_dir=$1
-    local conf_file=$2
+    local conf_dir="${1}"
+    local conf_file="${2}"
     [[ -d "${conf_dir}" ]] || mkdir -p "${conf_dir}"
     mv "${conf_file}" "${conf_dir}"
+}
+
+# Download file with curl
+function curl_down() {
+    url="${1}"
+    save_as="${2}"
+
+    curl -sfLo -o "${save_as}" --create-dirs "${url}" 2>&1 >> /dev/null
+
+    if [[ $? != 0 ]]; then
+        die "failed to download [${save_as}], [${url}]"
+    fi
+}
+
+function get_os_distro() {
+    if [[ -f /etc/os-release ]]; then
+        source "/etc/os-release"
+        echo -n "${ID}"
+    fi
+}
+
+function get_os_architecture() {
+    case "$(uname -m)" in
+        x86_64)
+            echo -n "amd64"
+            ;;
+        aarch64)
+            echo -n "arm64"
+            ;;
+    esac
 }
