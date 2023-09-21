@@ -2,9 +2,9 @@
 
 set -u
 
-source "utils/os_info.sh"
+source "utils/tools.sh"
 
-case "${os_distro}" in
+case $(get_os_distro) in
     arch)
         sudo pacman -S python-pip --noconfirm
         ;;
@@ -16,26 +16,24 @@ case "${os_distro}" in
         ;;
 esac
 
-PYENV_ROOT="${HOME}/.github/pyenv"
+pyenv_dir="${HOME}/.github/pyenv"
 
-if [[ -d "${PYENV_ROOT}" ]]; then
-  rm -rf "${PYENV_ROOT}"
-fi
+backup "${pyenv_dir}"
 
-git clone https://github.com/pyenv/pyenv.git "${PYENV_ROOT}" > /dev/null 2>&1
-
-if [[ $? != 0 ]]; then
-  echo "pyenv 下载失败"
-  exit
-fi
+git_clone "pyenv/pyenv.git" "${pyenv_dir}"
 
 # compile a dynamic Bash extension to speed up Pyenv
-cd "${PYENV_ROOT}" && src/configure && make -C src
+cd "${pyenv_dir}" && src/configure && make -C src
 cd -
+
+conf_dir="${HOME}/.config/zsh/"
+pyenv_conf="pyenv.zsh"
 
 {
   echo '#Pyenv config'
   echo 'export PYENV_ROOT="$HOME/.github/pyenv"'
   echo 'export PATH="${PYENV_ROOT}/bin:$PATH"'
   echo 'eval "$(pyenv init -)"'
-} > "config/zsh/python_env.zsh"
+} > "${pyenv_conf}"
+
+config "${conf_dir}" "${pyenv_conf}"

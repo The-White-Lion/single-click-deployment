@@ -6,7 +6,7 @@ source "utils/tools.sh"
 z_path="${HOME}/.github/z.lua"
 
 backup "${z_path}"
-git_clone "skywind3000/z.lua.git" "${z_path}" "z_lua"
+git_clone "skywind3000/z.lua.git" "${z_path}"
 
 conf_dir="${HOME}/.config/zsh/"
 z_lua="z_lua.zsh"

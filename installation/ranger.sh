@@ -10,4 +10,4 @@ backup "${conf_dir}"
 cp -r "config/ranger" "${conf_dir}"
 
 # plugin
-git_clone "cdump/ranger-devicons2" "${HOME}/.config/ranger/plugins/devicons2" "ranger"
+git_clone "cdump/ranger-devicons2" "${HOME}/.config/ranger/plugins/devicons2"

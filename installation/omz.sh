@@ -10,17 +10,17 @@ backup "${omz_dir}"
 backup "${zshrc}"
 
 # Oh My Zsh
-git_clone "ohmyzsh/ohmyzsh.git" "${omz_dir}" "oh-my-zsh"
+git_clone "ohmyzsh/ohmyzsh.git" "${omz_dir}"
 
 # Theme
 zsh_theme="powerlevel10k/powerlevel10k"
-git_clone "romkatv/powerlevel10k.git" "${omz_dir}/custom/themes/powerlevel10k" "${zsh_theme}"
+git_clone "romkatv/powerlevel10k.git" "${omz_dir}/custom/themes/powerlevel10k"
 
 # Plugin
 plugins=("zsh-syntax-highlighting")
 for plugin in ${plugins[*]}
 do
-    git_clone "zsh-users/${plugin}" "${omz_dir}/custom/plugins/zsh-syntax-highlighting" "{$plugin}"
+    git_clone "zsh-users/${plugin}" "${omz_dir}/custom/plugins/zsh-syntax-highlighting"
 done
 
 # Config
