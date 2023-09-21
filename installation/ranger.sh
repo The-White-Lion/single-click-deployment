@@ -1,9 +1,13 @@
 #!/bin/bash
 
 set -u
+source "utils/tools.sh"
 
 pip3 install ranger-fm --user
-cp -r "config/ranger" "${HOME}/.config/ranger"
+
+conf_dir="${HOME}/.config/ranger"
+backup "${conf_dir}"
+cp -r "config/ranger" "${conf_dir}"
 
 # plugin
-git clone https://github.com/cdump/ranger-devicons2 "${HOME}/.config/ranger/plugins/devicons2"
+git_clone "cdump/ranger-devicons2" "${HOME}/.config/ranger/plugins/devicons2" "ranger"
