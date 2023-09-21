@@ -24,18 +24,20 @@ do
 done
 
 # Config
-[[ -d "${HOME}/.config/zsh" ]] || mkdir -p "${HOME}/.config/zsh"
+conf_dir="${HOME}/.config/zsh/"
+omz="omz.zsh"
 
 {
     echo "export ZSH=${omz_dir}"
     echo "ZSH_THEME=\""${zsh_theme}"\""
     echo "plugins=(git ${plugins[*]} vi-mode)"
     echo 'source $ZSH/oh-my-zsh.sh'
-    echo -e '\n'
+    echo -ne '\n'
     echo '# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh'
     echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh'
-} > "${HOME}/.config/zsh/omz.zsh"
+} > "${omz}"
 
+config "${conf_dir}" "${omz}"
 cp "config/zsh/zshrc" "${HOME}/.config/zsh/zshrc"
 ln -s "${HOME}/.config/zsh/zshrc" "${zshrc}"
 

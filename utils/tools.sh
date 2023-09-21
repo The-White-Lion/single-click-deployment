@@ -30,3 +30,13 @@ function git_clone(){
     fi
 }
 
+# This function moves the configuration file to the right place and to clean up the tmp files
+# it takes two arguments
+# arg1: the configuration file directory
+# arg2: the configuration file
+function config() {
+    local conf_dir=$1
+    local conf_file=$2
+    [[ -d "${conf_dir}" ]] || mkdir -p "${conf_dir}"
+    mv "${conf_file}" "${conf_dir}"
+}
