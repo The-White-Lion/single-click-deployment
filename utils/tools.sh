@@ -33,6 +33,7 @@ function git_clone(){
     if [[ $? != 0 ]]; then
         die "failed to download [${repository_url}]"
     fi
+    echo "download complete"
 }
 
 
@@ -51,13 +52,28 @@ function curl_down() {
     url="${1}"
     save_as="${2}"
 
+    echo "start download ${save_as}"
     curl -sfLo -o "${save_as}" --create-dirs "${url}" > /dev/null 2>&1
 
     if [[ $? != 0 ]]; then
         die "failed to download [${url}]"
     fi
+    echo "download complete"
 }
 
+
+function wget_down() {
+    url="${1}"
+    save_as="${2}"
+
+    echo "start downlaod ${save_as}"
+    wget --no-check-certificate --continue "${url}" -O "${save_as}" > /dev/null 2>&1
+
+    if [[ $? != 0 ]]; then
+        die "failed to download [${url}]"
+    fi
+    echo "download complete"
+}
 
 function get_os_distro() {
     if [[ -f /etc/os-release ]]; then
