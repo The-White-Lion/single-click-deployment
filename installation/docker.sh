@@ -2,53 +2,64 @@
 
 set -u
 
-source "utils/os_info.sh"
+source "utils/tools.sh"
 docker_bin="$(command -v docker)"
 
 if [[ -n "${docker_bin}" ]]; then
-    echo "本系统已安装 docker"
-    "${docker_bin}" version
+    echo "docker is installed on this system"
+    "${docker_bin}" --version
     exit
 fi
 
-# different distro has different installation method
-function ubuntu() {
+
+function debian() {
+    local distro="${1}"
     # configure Docker Repository
-    sudo mkdir -p /etc/apt/keyrings
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | \
+    sudo install -m 0755 -d /etc/apt/keyrings
+    curl -fsSL "https://download.docker.com/linux/${distro}/gpg" | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/${distro} "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
     sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-    sudo apt update
-    sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-compose -y
+    sudo apt update -y > /dev/null 2>&1
+    sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 }
 
+
 function fedora() {
-    sudo dnf install dnf-plugins-core -y
+    sudo dnf install dnf-plugins-core -y > /dev/null 2>&1
     sudo dnf config-manager \
         --add-repo \
-        https://download.docker.com/linux/fedora/docker-ce.repo
+        https://download.docker.com/linux/fedora/docker-ce.repo \
+        > /dev/null 2>&1
 
     sudo dnf install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
 }
+
 
 function arch() {
   sudo pacman -S docker docker-compose --noconfirm
 }
 
-case "${os_distro}" in
-    raspbian | debian | ubuntu)
+
+echo "install docker ..."
+case $(get_os_distro) in
+    debian | ubuntu)
+        debian $(get_os_distro)
+        ;;
+    ubuntu)
         ubuntu
         ;;
     fedora)
         fedora
         ;;
     arch)
-      arch
-      ;;
+        arch
+        ;;
 esac
 
 # Settings
+echo "config docker ..."
 sudo usermod -aG docker "${USER}"
 
 # Start with OS
